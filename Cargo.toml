@@ -1,0 +1,52 @@
+[package]
+name = "headtracker-rs"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+cortex-m = { version = "0.7", features = ["critical-section-single-core"] }
+cortex-m-rt = "0.7"
+panic-halt = "0.2"
+
+embedded-hal = "0.2"
+embedded-io = "0.4"
+
+embassy-sync = { path = "embassy/embassy-sync" }
+embassy-executor = { path = "embassy/embassy-executor", features = ["integrated-timers"] }
+embassy-stm32 = { path = "embassy/embassy-stm32", features = ["nightly", "unstable-traits", "stm32f401cc", "unstable-pac", "memory-x", "time-driver-any", "exti"] }
+embassy-time = { path = "embassy/embassy-time", features = ["unstable-traits", "tick-hz-8_000_000"] }
+
+futures = { version = "0.3.17", default-features = false, features = ["async-await"] }
+heapless = { version = "0.7", default-features = false }
+
+# nb = "1"
+# cortex-m = "0.7"
+# cortex-m-rt = "0.7"
+# cortex-m-rtic = "1"
+# panic-halt = "0.2"
+# ahrs = { version = "0.6", default-features = false }
+# debouncr = "0.2.2"
+# nalgebra = { version = "0.31", default-features = false, features = ["libm-force"] }
+rtt-target = { version = "0.3.1", features = ["cortex-m"] }
+embedded-hal-async = "0.2.0-alpha.0"
+fusion-rs = { path = "../fusion-rs" }
+
+# [dependencies.stm32f4xx-hal]
+# version = "0.14.0"
+# features = ["stm32f401", "rt", "usb_fs", "rtic"]
+
+[profile.release]
+opt-level = 3
+lto = true
+strip = true
+codegen-units = 1
+panic = 'abort'
+overflow-checks = false
+
+[profile.dev]
+opt-level = 3
+codegen-units = 1
+panic = 'abort'
+overflow-checks = false
