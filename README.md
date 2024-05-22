@@ -1,4 +1,4 @@
-# headtracker-rs ![Visits](https://nkvnu62257.execute-api.ap-south-1.amazonaws.com/production?repo=headtracker-rs)
+# headtracker-rs ![Visits](https://lambda.348575.xyz/repo-view-counter?repo=headtracker-rs)
 # 3D IMU tracking with sensor fusion
 
 ## Uses:
